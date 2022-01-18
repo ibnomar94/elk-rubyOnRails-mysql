@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   post '/applications/:token/chats', to: 'chats#create'
   get '/applications/:token/chats/:chatnumber/messages', to: 'messages#index'
   post '/applications/:token/chats/:chatnumber/messages', to: 'messages#create'
-  get '/applications/:token/chats/:chatnumber/messages/:query', to: 'messages#search'
+  post '/applications/:token/chats/:chatnumber/messages/search', to: 'messages#search'
 
   resources :applications
   resources :chats

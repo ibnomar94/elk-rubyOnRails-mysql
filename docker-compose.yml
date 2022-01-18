@@ -22,8 +22,6 @@ services:
     environment:
       - xpack.security.enabled=false
       - "discovery.type=single-node"
-    networks:
-      - es-net
     ports:
       - 9200:9200
   kibana:
@@ -31,8 +29,6 @@ services:
     image: docker.elastic.co/kibana/kibana:7.11.0
     environment:
       - ELASTICSEARCH_HOSTS=http://es-container:9200
-    networks:
-      - es-net
     depends_on:
       - elasticsearch
     ports:
@@ -56,6 +52,3 @@ services:
       - DB_PASSWORD=password
       - DB_HOST=db
       - ELASTICSEARCH_URL=http://elasticsearch:9200 
-networks:
-  es-net:
-    driver: bridge

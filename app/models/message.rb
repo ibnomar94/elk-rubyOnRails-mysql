@@ -7,15 +7,18 @@ class Message < ApplicationRecord
     index_name Rails.application.class.parent_name.underscore
     document_type self.name.downcase
 
-    def self.search(query)
+    def self.search(searchQuery)
         __elasticsearch__.search(
         {
           query: {
-             match: {
-               query: query,
-               fields: ['body']
-             }
-           }
+            wildcard:{
+              body: {
+                value: "*"+searchQuery+"*",
+                boost: 1.0
+              }
+            }
+             
+          }
         })
     end
 
