@@ -6,6 +6,7 @@ class CreateChats < ActiveRecord::Migration[5.2]
       t.integer :message_count  , :null => false , :default => 0
 
       t.timestamps
+      t.index :number
     end
     #add a foreign key
     execute <<-SQL
