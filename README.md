@@ -1,24 +1,17 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+- To start the whole stack : docker-compose up
 
-Things you may want to cover:
+- Run "rails db:migrate" after all the dockers are up to run the migrations
 
-* Ruby version
+- The stack comes with "Adminer" which is a simple web interface to interact with the DB, it can be accessed through : http://localhost:8080/
 
-* System dependencies
+- The stack also comes with "Kibana" which can be accessed through : http://localhost:5601/. Note 
+that you will need to create an index pattern [http://localhost:5601/app/management/kibana/indexPatterns] in Kibana to be able to view the index and interact with it.
+Index name : myapp
 
-* Configuration
+- RabbitMq is used a queueing system, its admin page can be accessed from : http://localhost:15672/ [user:guest , password:guest]
 
-* Database creation
+- I have added a "ChatApp.postman_collection.json" which is a postman collection holding the requests for the APIs
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- After stack is up run :  WORKERS=ChatsWorker bundle exec rake sneakers:run
